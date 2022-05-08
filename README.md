@@ -12,5 +12,5 @@ Executar o comando abaixo:
 
 Após subir todos os containers, acessar:
 
-  FrontEnd(Angular): http://localhost:80;
-  Swagger: http://localhost:5000/documentation;
+  * FrontEnd(Angular): http://localhost:80;
+  * Swagger: http://localhost:5000/documentation;
