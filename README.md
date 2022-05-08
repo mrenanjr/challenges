@@ -10,7 +10,7 @@ Executar o comando abaixo:
 > docker-compose build --force-rm --no-cache && docker-compose up
 ```
 
-Após subir todos os containers, acessar:
+Após subir o container, acessar:
 
   * FrontEnd(Angular): http://localhost:80;
   * Swagger: http://localhost:5000/documentation;
