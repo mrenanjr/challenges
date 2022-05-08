@@ -1,6 +1,6 @@
 # Desafio Stefanini!!!
 
-Aplicação com os requisitos do desafio, web API .NET Core 6, Swagger funcionando e frontend em Angular.
+Aplicação com os requisitos do desafio, web API .NET Core 6, Swagger e frontend em Angular.
 
 Foi realizado a utilização de nginx pra poder rodar a aplicação juntamente com todas as suas depêndencias.
 
