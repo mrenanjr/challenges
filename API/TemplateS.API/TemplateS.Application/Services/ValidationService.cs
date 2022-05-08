@@ -46,6 +46,17 @@ namespace TemplateS.Application.Services
             return true;
         }
 
+        public static bool ValidCreatePersonRequestObject(CreatePersonRequestViewModel obj)
+        {
+            if (obj.Age.HasValue && obj.Age.Value <= 0)
+                NotValid(nameof(obj.Age));
+
+            if (obj.Cpf != null && (obj.Cpf.Length != 11 || !IsDigitsOnly(obj.Cpf)))
+                NotValid(nameof(obj.Cpf));
+
+            return true;
+        }
+
         #endregion
 
         private static void NotValid(string property) => throw new ApiException($"{property} is not valid", HttpStatusCode.BadRequest);

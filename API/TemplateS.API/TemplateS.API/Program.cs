@@ -11,12 +11,10 @@ var services = builder.Services;
 services.AddControllers();
 services.AddCors();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 services.AddEndpointsApiExplorer();
-services.AddDbContext<ContextCore>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+services.AddDbContext<ContextCore>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
 services.AddAutoMapper(typeof(AutoMapperSetup));
 
-//CrossCutting
 NativeInjector.RegisterServices(services);
 services.AddSwaggerConfiguration();
 

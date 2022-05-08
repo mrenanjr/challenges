@@ -1,0 +1,24 @@
+<div class="row">
+  <ng-container *ngFor="let city of cities">
+    <div class="col-md-4">
+      <a [routerLink]="[city.id, 'edit']">
+        <div class="card card-primary">
+          <div class="card-body">
+            <h1 class="card-title">{{city.name}}</h1>
+            <p class="card-text">{{city.uf}}</p>
+          </div>
+          <div class="card-footer">
+            <span>{{city.createdDate | date: 'dd/MM/yyyy HH:mm:ss'}}</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </ng-container>
+  <div *ngIf="cities.length == 0" class="col-md-12">
+    <h1 class="display-4">No cities found. Click on Add button to create one.</h1>
+  </div>
+</div>
+
+<a [routerLink]="['/cities/add']" class="float bg-success">
+  <i class="fa fa-plus my-float"></i>
+</a>

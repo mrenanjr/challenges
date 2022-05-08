@@ -12,7 +12,7 @@ namespace TemplateS.Application.ViewModels.Request
         [Required, MaxLength(300)]
         public string Name { get; set; }
         [Required]
-        public int Age { get; set; }
+        public int? Age { get; set; }
         [Required, StringLength(11)]
         public string Cpf { get; set; }
         [Required]

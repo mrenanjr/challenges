@@ -1,0 +1,11 @@
+.form-group {
+    margin-bottom: 8px;
+}
+
+.d-inline-block {
+    width: 100%;
+}
+
+  .d-inline-block > .btn {
+    width: 100%;
+  }

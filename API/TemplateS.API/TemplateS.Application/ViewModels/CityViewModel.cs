@@ -12,5 +12,6 @@ namespace TemplateS.Application.ViewModels
         public string Id { get; set; }
         public string Name { get; set; }
         public string Uf { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

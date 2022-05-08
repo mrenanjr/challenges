@@ -28,10 +28,7 @@ namespace TemplateS.Infra.Data.Repositories
 
         #endregion
 
-        public Repository(ContextCore context)
-        {
-            _context = context;
-        }
+        public Repository(ContextCore context) => _context = context;
 
         #region 'Methods: Create/Update/Remove/Save'
 
@@ -68,17 +65,14 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                EntityEntry<TEntity> entry = NewMethod(model);
-
+                var entry = NewMethod(model);
                 DbSet.Attach(model);
-
                 entry.State = EntityState.Modified;
 
                 return Save() > 0;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -89,9 +83,9 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                foreach (TEntity register in models)
+                foreach (var register in models)
                 {
-                    EntityEntry<TEntity> entry = _context.Entry(register);
+                    var entry = _context.Entry(register);
                     DbSet.Attach(register);
                     entry.State = EntityState.Modified;
                 }
@@ -100,7 +94,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -109,10 +102,9 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                
-                EntityEntry<TEntity> _entry = _context.Entry(model);
+                var entry = _context.Entry(model);
                 DbSet.Attach(model);
-                _entry.State = EntityState.Deleted;
+                entry.State = EntityState.Deleted;
 
                 return Save() > 0;
             }
@@ -126,12 +118,11 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                TEntity model = DbSet.Find(Keys);
+                var model = DbSet.Find(Keys);
                 return (model != null) && Delete(model);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -140,13 +131,12 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                TEntity model = DbSet.Where<TEntity>(where).FirstOrDefault<TEntity>();
+                var model = DbSet.Where(where).FirstOrDefault();
 
                 return (model != null) && Delete(model);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -175,7 +165,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -188,7 +177,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -200,13 +188,12 @@ namespace TemplateS.Infra.Data.Repositories
                 IQueryable<TEntity> query = DbSet;
 
                 if (includes != null)
-                    query = includes(query) as IQueryable<TEntity>;
+                    query = (IQueryable<TEntity>)includes(query);
 
                 return query.SingleOrDefault(predicate);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -219,7 +206,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -231,13 +217,12 @@ namespace TemplateS.Infra.Data.Repositories
                 IQueryable<TEntity> query = DbSet;
 
                 if (includes != null)
-                    query = includes(query) as IQueryable<TEntity>;
+                    query = (IQueryable<TEntity>)includes(query);
 
                 return query.Where(predicate).AsQueryable();
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -250,16 +235,15 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                IQueryable<TEntity>? query = DbSet.AsNoTracking();
+                var query = DbSet.AsNoTracking();
 
                 if (includes != null)
-                    query = includes(query) as IQueryable<TEntity>;
+                    query = (IQueryable<TEntity>)includes(query);
 
                 return await query.SingleOrDefaultAsync(predicate);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -274,7 +258,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -284,7 +267,7 @@ namespace TemplateS.Infra.Data.Repositories
             try
             {
                 (model as BaseEntity).UpdatedDate = DateTime.Now;
-                EntityEntry<TEntity> entry = _context.Entry(model);
+                var entry = _context.Entry(model);
                 DbSet.Attach(model);
                 entry.State = EntityState.Modified;
 
@@ -300,12 +283,9 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                EntityEntry<TEntity> entry = _context.Entry(model);
-
+                var entry = _context.Entry(model);
                 DbSet.Attach(model);
-
                 entry.State = EntityState.Deleted;
-
                 return await SaveAsync() > 0;
             }
             catch (Exception)
@@ -318,7 +298,7 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                TEntity model = DbSet.Find(Keys);
+                var model = DbSet.Find(Keys);
                 return (model != null) && await DeleteAsync(model);
             }
             catch (Exception)
@@ -331,13 +311,12 @@ namespace TemplateS.Infra.Data.Repositories
         {
             try
             {
-                TEntity model = DbSet.FirstOrDefault(where);
+                var model = DbSet.FirstOrDefault(where);
 
                 return (model != null) && await DeleteAsync(model);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -350,7 +329,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -367,7 +345,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -380,19 +357,18 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
-        public async Task<List<TEntity>> GetAllAsync(Func<IQueryable<TEntity>, object> includes = null)
+        public async Task<List<TEntity>> GetAllAsync(Func<IQueryable<TEntity>, object>? includes = null)
         {
             try
             {
-                IQueryable<TEntity> query = DbSet.AsNoTracking();
+                var query = DbSet.AsNoTracking();
 
                 if (includes != null)
-                    query = includes(query) as IQueryable<TEntity>;
+                    query = (IQueryable<TEntity>)includes(query);
 
                 return await query.ToListAsync();
             }
@@ -415,7 +391,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

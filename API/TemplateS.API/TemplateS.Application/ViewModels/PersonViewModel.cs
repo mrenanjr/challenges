@@ -15,5 +15,6 @@ namespace TemplateS.Application.ViewModels
         public string Cpf { get; set; }
         public string CityId { get; set; }
         public string City { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

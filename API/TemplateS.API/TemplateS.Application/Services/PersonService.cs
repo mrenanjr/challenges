@@ -66,6 +66,7 @@ namespace TemplateS.Application.Services
             var guid = ValidationService.ValidGuid<City>(viewModel.CityId);
             var city = _cityRepository.Find(x => x.Id == guid);
             ValidationService.ValidExists(city);
+            ValidationService.ValidCreatePersonRequestObject(viewModel);
 
             var person = _mapper.Map<Person>(viewModel);
             var personCity = await _personRepository.CreateAsync(person);
