@@ -42,6 +42,8 @@ namespace TemplateS.Domain.Interfaces
 
         Task<bool> DeleteAsync(params object[] Keys);
 
+        Task<bool> DeleteAllAsync();
+
         Task<int> SaveAsync();
 
         Task<TEntity> GetAsync(params object[] Keys);

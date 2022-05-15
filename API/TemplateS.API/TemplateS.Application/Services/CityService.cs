@@ -84,5 +84,12 @@ namespace TemplateS.Application.Services
 
             return new DeleteResponse();
         }
+
+        public async Task<DeleteResponse> DeleteAllAsync()
+        {
+            await _cityRepository.DeleteAllAsync();
+
+            return new DeleteResponse();
+        }
     }
 }

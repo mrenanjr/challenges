@@ -18,9 +18,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateS.Infra.CrossCutting.IoC", "TemplateS.Infra.CrossCutting.IoC\TemplateS.Infra.CrossCutting.IoC.csproj", "{D078324C-81A4-434D-93A4-2E6A87FBDF5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateS.Infra.CrossCutting.Swagger", "TemplateS.Infra.CrossCutting.Swagger\TemplateS.Infra.CrossCutting.Swagger.csproj", "{3E2F1CFE-85F9-4111-A938-F343E4B54725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateS.Infra.CrossCutting.Swagger", "TemplateS.Infra.CrossCutting.Swagger\TemplateS.Infra.CrossCutting.Swagger.csproj", "{3E2F1CFE-85F9-4111-A938-F343E4B54725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateS.Infra.CrossCutting.ExceptionHandler", "TemplateS.Infra.CrossCutting.ExceptionHandler\TemplateS.Infra.CrossCutting.ExceptionHandler.csproj", "{40640864-AE0F-4A4B-BDB9-268C90B23E89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateS.Infra.CrossCutting.ExceptionHandler", "TemplateS.Infra.CrossCutting.ExceptionHandler\TemplateS.Infra.CrossCutting.ExceptionHandler.csproj", "{40640864-AE0F-4A4B-BDB9-268C90B23E89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateS.Infra.CrossCutting.Auth", "TemplateS.Infra.CrossCutting.Auth\TemplateS.Infra.CrossCutting.Auth.csproj", "{004E6903-5D4A-4FA2-AFF9-E9A6DE6FD7AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateS.Infra.CrossCutting.RabbitMQ", "TemplateS.Infra.CrossCutting.RabbitMQ\TemplateS.Infra.CrossCutting.RabbitMQ.csproj", "{8E4DF609-FAF3-4386-A135-7865F296B7FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7EED742C-DF68-47F1-ACDD-3D7FC8B663F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateS.Application.Tests", "TemplateS.Application.Tests\TemplateS.Application.Tests.csproj", "{5F484996-3AD2-4D0D-BE11-0FA795AAFB78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,9 +64,24 @@ Global
 		{40640864-AE0F-4A4B-BDB9-268C90B23E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40640864-AE0F-4A4B-BDB9-268C90B23E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40640864-AE0F-4A4B-BDB9-268C90B23E89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004E6903-5D4A-4FA2-AFF9-E9A6DE6FD7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004E6903-5D4A-4FA2-AFF9-E9A6DE6FD7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004E6903-5D4A-4FA2-AFF9-E9A6DE6FD7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004E6903-5D4A-4FA2-AFF9-E9A6DE6FD7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E4DF609-FAF3-4386-A135-7865F296B7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E4DF609-FAF3-4386-A135-7865F296B7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E4DF609-FAF3-4386-A135-7865F296B7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E4DF609-FAF3-4386-A135-7865F296B7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F484996-3AD2-4D0D-BE11-0FA795AAFB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F484996-3AD2-4D0D-BE11-0FA795AAFB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F484996-3AD2-4D0D-BE11-0FA795AAFB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F484996-3AD2-4D0D-BE11-0FA795AAFB78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F484996-3AD2-4D0D-BE11-0FA795AAFB78} = {7EED742C-DF68-47F1-ACDD-3D7FC8B663F3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21518F97-A015-45C1-8201-A3ECB498A99C}

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "TemplateS.Client", "TemplateS.Client\TemplateS.Client.esproj", "{1E0840B8-B86A-4588-B0DA-9BB380CFA72C}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "TemplateS.Client.React", "TemplateS.Client.React\TemplateS.Client.React.esproj", "{E018122B-6A8C-4633-936A-4989B8715784}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,12 @@ Global
 		{1E0840B8-B86A-4588-B0DA-9BB380CFA72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E0840B8-B86A-4588-B0DA-9BB380CFA72C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1E0840B8-B86A-4588-B0DA-9BB380CFA72C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E018122B-6A8C-4633-936A-4989B8715784}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E018122B-6A8C-4633-936A-4989B8715784}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E018122B-6A8C-4633-936A-4989B8715784}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E018122B-6A8C-4633-936A-4989B8715784}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E018122B-6A8C-4633-936A-4989B8715784}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E018122B-6A8C-4633-936A-4989B8715784}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

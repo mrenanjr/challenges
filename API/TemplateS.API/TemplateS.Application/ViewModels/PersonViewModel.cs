@@ -13,8 +13,8 @@ namespace TemplateS.Application.ViewModels
         public string Name { get; set; }
         public int Age { get; set; }
         public string Cpf { get; set; }
-        public string CityId { get; set; }
-        public string City { get; set; }
+        public CityViewModel City { get; set; }
+        public ContactViewModel Contact { get; set; }
         public DateTime CreatedDate { get; set; }
     }
 }

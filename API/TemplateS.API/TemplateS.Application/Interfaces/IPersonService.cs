@@ -16,5 +16,6 @@ namespace TemplateS.Application.Interfaces
         Task<CreateResponse<PersonViewModel>> CreateAsync(CreatePersonRequestViewModel viewModel);
         Task<UpdateResponse> UpdateAsync(string id, UpdatePersonRequestViewModel viewModel);
         Task<DeleteResponse> DeleteAsync(string id);
+        Task<DeleteResponse> DeleteAllAsync();
     }
 }

@@ -30,5 +30,8 @@ namespace TemplateS.API.Controllers
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id) => Ok(await _personService.DeleteAsync(id));
+
+        [HttpDelete, Route("[action]")]
+        public async Task<IActionResult> DeleteAllAsync() => Ok(await _personService.DeleteAllAsync());
     }
 }

@@ -13,7 +13,7 @@ namespace TemplateS.Application.Services
 {
     public static class ValidationService
     {
-        #region Generic Validations
+        #region Generic Validators
 
         public static Guid ValidGuid<T>(string id)
         {
@@ -35,26 +35,98 @@ namespace TemplateS.Application.Services
 
         #region Persons Validators
 
-        public static bool ValidUpdatePersonRequestObject(UpdatePersonRequestViewModel obj)
+        public static void ValidUpdatePersonRequestObject(UpdatePersonRequestViewModel obj)
         {
             if (obj.Age.HasValue && obj.Age.Value <= 0)
                 NotValid(nameof(obj.Age));
 
             if(obj.Cpf != null && (obj.Cpf.Length != 11 || !IsDigitsOnly(obj.Cpf)))
                 NotValid(nameof(obj.Cpf));
-
-            return true;
         }
 
-        public static bool ValidCreatePersonRequestObject(CreatePersonRequestViewModel obj)
+        public static void ValidCreatePersonRequestObject(CreatePersonRequestViewModel obj)
         {
-            if (obj.Age.HasValue && obj.Age.Value <= 0)
+            if (obj.Age <= 0)
                 NotValid(nameof(obj.Age));
 
             if (obj.Cpf != null && (obj.Cpf.Length != 11 || !IsDigitsOnly(obj.Cpf)))
                 NotValid(nameof(obj.Cpf));
+        }
 
-            return true;
+        #endregion
+
+        #region Balanced Brackets Validators
+
+        public static string ValidBalancedBracket(string balancedBracket)
+        {
+            var property = "Balanced Bracket";
+            var matches = Regex.Matches(balancedBracket, @"{|}|\(|\)|\[|\]");
+
+            if (balancedBracket.Length % 2 != 0 || matches.Count != balancedBracket.Length)
+                NotValid(property);
+
+            var result = Validate(balancedBracket);
+            
+            return result ? $"{property} is valid." : $"{property} is not valid.";
+        }
+
+        private static bool Validate(string balancedBracket)
+        {
+            Stack<char> stack = new();
+            List<char> openBrackets = new() { '(', '[', '{' };
+            List<char> closedBrackets = new() { ')', ']', '}' };
+
+            balancedBracket.ToList().ForEach(bracket =>
+            {
+                if (stack.Count == 0 || openBrackets.Contains(bracket))
+                {
+                    stack.Push(bracket);
+                    return;
+                }
+
+                stack.TryPeek(out char top);
+                if (closedBrackets.Contains(bracket) && top == GetOpposity(bracket))
+                    stack.Pop();
+            });
+
+            return stack.Count == 0;
+        }
+
+        private static char GetOpposity(char bracket)
+        {
+            Dictionary<char, char> mapper = new()
+            {
+                { '(', ')' },
+                { ')', '(' },
+                { '[', ']' },
+                { ']', '[' },
+                { '{', '}' },
+                { '}', '{' }
+            };
+
+            return mapper[bracket];
+        }
+
+        #endregion
+
+        #region Contacts Validators
+
+        public static void ValidCreateContactRequestObject(CreateContactRequestViewModel obj)
+        {
+            if (obj.Whatsapp != null && !IsDigitsOnly(obj.Whatsapp))
+                NotValid(nameof(obj.Whatsapp));
+
+            if (obj.Phone != null && !IsDigitsOnly(obj.Phone))
+                NotValid(nameof(obj.Phone));
+        }
+
+        public static void ValidUpdateContactRequestObject(UpdateContactRequestViewModel obj)
+        {
+            if (obj.Whatsapp != null && !IsDigitsOnly(obj.Whatsapp))
+                NotValid(nameof(obj.Whatsapp));
+
+            if (obj.Phone != null && !IsDigitsOnly(obj.Phone))
+                NotValid(nameof(obj.Phone));
         }
 
         #endregion

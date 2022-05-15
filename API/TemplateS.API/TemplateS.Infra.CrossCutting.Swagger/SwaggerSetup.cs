@@ -12,9 +12,9 @@ namespace TemplateS.Infra.CrossCutting.Swagger
             {
                 opt.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Desafio Stefanini Software",
+                    Title = "Desafios Software",
                     Version = "v1",
-                    Description = "Desafio técnicio Stefanini",
+                    Description = "Desafio técnicio de Software com .NET Core 6 e Frontend",
                     Contact = new OpenApiContact
                     {
                         Name = "Manoel Renan Oliveira Júnior",

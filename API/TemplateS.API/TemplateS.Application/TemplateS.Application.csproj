@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateS.Domain\TemplateS.Domain.csproj" />
+    <ProjectReference Include="..\TemplateS.Infra.CrossCutting.Auth\TemplateS.Infra.CrossCutting.Auth.csproj" />
     <ProjectReference Include="..\TemplateS.Infra.CrossCutting.ExceptionHandler\TemplateS.Infra.CrossCutting.ExceptionHandler.csproj" />
   </ItemGroup>
 

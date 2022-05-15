@@ -42,7 +42,6 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -317,6 +316,28 @@ namespace TemplateS.Infra.Data.Repositories
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        public async Task<bool> DeleteAllAsync()
+        {
+            try
+            {
+                var models = DbSet;
+
+                foreach (var register in models)
+                {
+                    var entry = _context.Entry(register);
+                    DbSet.Attach(register);
+                    entry.State = EntityState.Deleted;
+                }
+
+                return await SaveAsync() > 0;
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

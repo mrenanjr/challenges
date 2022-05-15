@@ -13,6 +13,9 @@ namespace TemplateS.Infra.Data.Context
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<PullRequest> PullRequests { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         #endregion
 
@@ -20,6 +23,9 @@ namespace TemplateS.Infra.Data.Context
         {
             modelBuilder.ApplyConfiguration(new PersonMap());
             modelBuilder.ApplyConfiguration(new CityMap());
+            modelBuilder.ApplyConfiguration(new PullRequestMap());
+            modelBuilder.ApplyConfiguration(new UserMap());
+            modelBuilder.ApplyConfiguration(new ContactMap());
 
             modelBuilder.ApplyGlobalStandards();
             modelBuilder.SeedData();

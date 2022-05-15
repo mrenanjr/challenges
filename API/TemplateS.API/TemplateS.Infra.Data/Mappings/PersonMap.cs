@@ -14,6 +14,7 @@ namespace TemplateS.Infra.Data.Mappings
             builder.Property(x => x.Age).IsRequired();
 
             builder.HasOne(x => x.City).WithMany(x => x.Persons).HasForeignKey(x => x.CityId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.Contact).WithOne(x => x.Person).HasForeignKey<Contact>(x => x.PersonId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

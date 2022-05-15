@@ -16,5 +16,11 @@ namespace TemplateS.Application.ViewModels.Request
         [StringLength(11)]
         public string? Cpf { get; set; }
         public string? CityId { get; set; }
+        [MaxLength(50)]
+        public string? Email { get; set; }
+        [MaxLength(20)]
+        public string? Phone { get; set; }
+        [MaxLength(20)]
+        public string? Whatsapp { get; set; }
     }
 }

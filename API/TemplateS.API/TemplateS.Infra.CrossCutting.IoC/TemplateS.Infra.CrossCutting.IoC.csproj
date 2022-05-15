@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TemplateS.Application\TemplateS.Application.csproj" />
+    <ProjectReference Include="..\TemplateS.Infra.CrossCutting.RabbitMQ\TemplateS.Infra.CrossCutting.RabbitMQ.csproj" />
     <ProjectReference Include="..\TemplateS.Infra.Data\TemplateS.Infra.Data.csproj" />
   </ItemGroup>
 

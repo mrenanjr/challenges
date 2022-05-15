@@ -10,5 +10,6 @@ namespace TemplateS.Domain.Entities
 
         public Guid CityId { get; set; }
         public City City { get; set; }
+        public Contact Contact { get; set; }
     }
 }
