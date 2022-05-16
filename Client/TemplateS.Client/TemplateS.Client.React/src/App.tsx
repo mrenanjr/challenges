@@ -21,7 +21,9 @@ const App: React.FC = () => (
       <ApolloProvider client={apolloClient}>
           <AppProvider>
             <Sidebar />
-            <Routes />
+            <div id="globalContent">
+              <Routes />
+            </div>
           </AppProvider>
 
           <GlobalStyle />

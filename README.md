@@ -1,8 +1,6 @@
 # Desafio Stefanini!!!
 
-Aplicação com os requisitos do desafio, web API .NET Core 6, Swagger e frontend em Angular.
-
-Foi realizado a utilização de nginx pra poder rodar a aplicação juntamente com todas as suas depêndencias.
+Aplicação com os requisitos do desafio, web API .NET Core 6, Swagger e Frontend.
 
 Executar o comando abaixo:
 
@@ -12,5 +10,5 @@ Executar o comando abaixo:
 
 Após subir o container, acessar:
 
-  * FrontEnd(Angular): http://localhost:80;
+  * FrontEnd: http://localhost:3000;
   * Swagger: http://localhost:5000/documentation;

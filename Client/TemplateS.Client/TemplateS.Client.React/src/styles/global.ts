@@ -20,11 +20,15 @@ export default createGlobalStyle`
   }
 
   #root {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    margin-left: 320px;
   }
 
+  #globalContent {
+    max-width: 960px;
+    padding: 40px 20px;
+    margin: 0 auto;
+  }
+  
   button {
     cursor: pointer;
   }
