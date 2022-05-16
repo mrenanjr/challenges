@@ -1,4 +1,4 @@
-# Desafio Stefanini!!!
+# Desafios!!!
 
 Aplicação com os requisitos do desafio, web API .NET Core 6, Swagger e Frontend.
 
