@@ -12,3 +12,8 @@ Após subir o container, acessar:
 
   * FrontEnd: http://localhost:3000;
   * Swagger: http://localhost:5000/documentation;
+
+Login:
+
+  * Email: admin@teste.com;
+  * Password: 123456;
