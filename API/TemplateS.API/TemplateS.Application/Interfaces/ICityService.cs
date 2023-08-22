@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TemplateS.Application.Dto.Request;
 using TemplateS.Application.ViewModels;
 using TemplateS.Application.ViewModels.Request;
 using TemplateS.Application.ViewModels.Response;
@@ -14,8 +15,8 @@ namespace TemplateS.Application.Interfaces
     {
         Task<GetAllResponse<CityViewModel>> GetAllAsync();
         Task<GetResponse<CityViewModel>> GetByIdAsync(string id);
-        Task<CreateResponse<CityViewModel>> CreateAsync(CreateCityRequestViewModel viewModel);
-        Task<UpdateResponse> UpdateAsync(string id, UpdateCityRequestViewModel viewModel);
+        Task<CreateResponse<CityViewModel>> CreateAsync(CreateCityRequestDto viewModel);
+        Task<UpdateResponse> UpdateAsync(string id, UpdateCityRequestDto viewModel);
         Task<DeleteResponse> DeleteAsync(string id);
         Task<DeleteResponse> DeleteAllAsync();
     }

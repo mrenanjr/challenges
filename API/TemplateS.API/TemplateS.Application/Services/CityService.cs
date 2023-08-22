@@ -13,6 +13,7 @@ using TemplateS.Application.ViewModels.Response;
 using TemplateS.Application.ViewModels.Request;
 using Microsoft.Extensions.Logging;
 using TemplateS.Application.Common;
+using TemplateS.Application.Dto.Request;
 
 namespace TemplateS.Application.Services
 {
@@ -47,7 +48,7 @@ namespace TemplateS.Application.Services
             return response;
         }
 
-        public async Task<CreateResponse<CityViewModel>> CreateAsync(CreateCityRequestViewModel viewModel)
+        public async Task<CreateResponse<CityViewModel>> CreateAsync(CreateCityRequestDto viewModel)
         {
             Validator.ValidateObject(viewModel, new ValidationContext(viewModel), true);
 
@@ -57,7 +58,7 @@ namespace TemplateS.Application.Services
             return new CreateResponse<CityViewModel>() { Data = _mapper.Map<CityViewModel>(newCity) };
         }
 
-        public async Task<UpdateResponse> UpdateAsync(string id, UpdateCityRequestViewModel viewModel)
+        public async Task<UpdateResponse> UpdateAsync(string id, UpdateCityRequestDto viewModel)
         {
             Validator.ValidateObject(viewModel, new ValidationContext(viewModel), true);
 

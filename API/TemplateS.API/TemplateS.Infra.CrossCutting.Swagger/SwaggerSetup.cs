@@ -14,7 +14,7 @@ namespace TemplateS.Infra.CrossCutting.Swagger
                 {
                     Title = "Desafios Software",
                     Version = "v1",
-                    Description = "Desafio técnicio de Software com .NET Core 6 e Frontend",
+                    Description = "Desafio técnicio de Software com .NET Core 6 e React Frontend",
                     Contact = new OpenApiContact
                     {
                         Name = "Manoel Renan Oliveira Júnior",

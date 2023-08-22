@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
-import { FiChevronRight, FiLogOut, FiLogIn, FiTrash2 } from 'react-icons/fi';
+import { FiChevronRight, FiLogOut, FiTrash2 } from 'react-icons/fi';
 import { GET_REPOSITORY, PROFILE_QUERY } from '../../graphql/pullrequest-queries';
-
-import { apolloClearCache } from '../../App';
 
 import { Header, PRImg, SubHeader, Title, Form, Error, Repositories } from './styles';
 

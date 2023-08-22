@@ -23,16 +23,18 @@ services:
     clientreact:
         depends_on:
             - api
+        hostname: clientreact.docker
         build:
             context: "./Client/TemplateS.Client/TemplateS.Client.React"
             dockerfile: "Dockerfile"
         ports: 
-            - "3000:80"
+            - "3000:3000"
     
     sqldata:
         image: "mcr.microsoft.com/mssql/server:2017-latest-ubuntu"
+        hostname: sqldata.docker
         environment:
-            SA_PASSWORD: "Desafio123"
+            MSSQL_SA_PASSWORD: "Desafio123"
             ACCEPT_EULA: "Y"
             MSSQL_PID: Express
         ports: 
@@ -41,7 +43,8 @@ services:
     api:
         depends_on:
             - sqldata
-            #- rabbitmq
+            - rabbitmq
+        hostname: api.docker
         build: 
             context: "./API/TemplateS.API"
             dockerfile: "Dockerfile"
@@ -53,15 +56,14 @@ services:
             DBUser: "SA"
             DBPassword: "Desafio123"
             Database: "Desafio"
-        command: ["./wait-for-it.sh" , "sqldata:1433"]
         restart: always
 
-    #rabbitmq:
-    #    container_name: rabbitmq
-    #    ports:
-    #        - 5672:5672
-    #        - 15672:15672
-    #    environment:
-    #        - RABBITMQ_DEFAULT_USER=guest
-    #        - RABBITMQ_DEFAULT_PASS=guest
-    #    image: rabbitmq:3-management
+    rabbitmq:
+        image: rabbitmq:3-management
+        hostname: rabbitmq.docker
+        ports:
+            - 5672:5672
+            - 15672:15672
+        environment:
+            - RABBITMQ_DEFAULT_USER=guest
+            - RABBITMQ_DEFAULT_PASS=guest

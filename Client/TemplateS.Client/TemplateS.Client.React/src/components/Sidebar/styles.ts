@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { shade } from 'polished';
-import { transform } from 'typescript';
 
 export const Container = styled.div`
     position: fixed;

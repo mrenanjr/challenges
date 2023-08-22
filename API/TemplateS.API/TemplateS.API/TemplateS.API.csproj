@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TemplateS.Infra.CrossCutting.Auth\TemplateS.Infra.CrossCutting.Auth.csproj" />
+    <ProjectReference Include="..\TemplateS.Infra.CrossCutting.FluentValidation\TemplateS.Infra.CrossCutting.FluentValidation.csproj" />
     <ProjectReference Include="..\TemplateS.Infra.CrossCutting.IoC\TemplateS.Infra.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\TemplateS.Infra.CrossCutting.RabbitMQ\TemplateS.Infra.CrossCutting.RabbitMQ.csproj" />
     <ProjectReference Include="..\TemplateS.Infra.CrossCutting.Swagger\TemplateS.Infra.CrossCutting.Swagger.csproj" />

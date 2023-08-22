@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TemplateS.Application.Dto.Request;
 using TemplateS.Application.ViewModels;
 using TemplateS.Application.ViewModels.Request;
 using TemplateS.Domain.Entities;
@@ -30,11 +31,11 @@ namespace TemplateS.Application.AutoMapper
             
             #endregion
 
-            #region ViewModelToDomain
+            #region DtoToDomain
 
             CreateMap<CityViewModel, City>();
-            CreateMap<CreateCityRequestViewModel, City>();
-            CreateMap<UpdateCityRequestViewModel, City>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
+            CreateMap<CreateCityRequestDto, City>();
+            CreateMap<UpdateCityRequestDto, City>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
             CreateMap<PersonViewModel, Person>();
             CreateMap<CreatePersonRequestViewModel, Person>();
             CreateMap<UpdatePersonRequestViewModel, Person>().ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));

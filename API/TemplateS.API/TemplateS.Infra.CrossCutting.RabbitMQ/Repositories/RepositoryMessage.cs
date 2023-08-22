@@ -37,10 +37,11 @@ namespace TemplateS.Infra.CrossCutting.RabbitMQ.Repositories
         {
             try
             {
-                var factory = new ConnectionFactory {
+                var factory = new ConnectionFactory() {
                     HostName = _config.Host,
                     UserName = _config.User,
                     Password = _config.Password,
+                    Port = 5672,
                     DispatchConsumersAsync = true
                 };
 

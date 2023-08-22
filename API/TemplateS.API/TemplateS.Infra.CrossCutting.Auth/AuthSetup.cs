@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using TemplateS.Infra.CrossCutting.Auth.Models;
-using Microsoft.IdentityModel.Tokens;
 
 namespace TemplateS.Infra.CrossCutting.Auth
 {
@@ -12,7 +12,7 @@ namespace TemplateS.Infra.CrossCutting.Auth
         public static IServiceCollection AddAuthConfiguration(this IServiceCollection services)
         {
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
-            
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

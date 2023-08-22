@@ -1,6 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using TemplateS.Application.Dto.Request;
 using TemplateS.Application.Interfaces;
 using TemplateS.Application.Services;
+using TemplateS.Application.Validations;
+using TemplateS.Application.ViewModels.Request;
 using TemplateS.Domain.Interfaces;
 using TemplateS.Infra.CrossCutting.RabbitMQ.Repositories;
 using TemplateS.Infra.Data.Repositories;
@@ -29,8 +33,15 @@ namespace TemplateS.Infra.CrossCutting.IoC
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPullRequestRepository, PullRequestRepository>();
-            services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddSingleton<IMessageRepository, MessageRepository>();
             services.AddScoped<IContactRepository, ContactRepository>();
+
+            #endregion
+
+            #region Validators
+
+            services.AddTransient<IValidator<CreateCityRequestDto>, CreateCityRequestValidator>();
+            services.AddTransient<IValidator<UpdateCityRequestDto>, UpdateCityRequestValidator>();
 
             #endregion
         }

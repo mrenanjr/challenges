@@ -6,7 +6,7 @@ import { FiHome, FiLogIn, FiUsers, FiLogOut } from 'react-icons/fi';
 import { BiBracket } from 'react-icons/bi';
 import { MdOutlineContacts } from 'react-icons/md';
 import { IoIosContacts } from 'react-icons/io';
-import { FaCity } from 'react-icons/fa';
+import { FaCity, FaRocketchat } from 'react-icons/fa';
 
 import { Container, Header, Menu, MenuIndicator, MenuItem, MenuItemText } from './styles';
 
@@ -78,6 +78,13 @@ const Sidebar: React.FC = () => {
             handler: (thisObj: INavItem) => history.push(thisObj.to),
             visible: true
         },
+        Messages: {
+            display: 'RabbitMQ Messages',
+            icon: <FaRocketchat />,
+            to: '/messages',
+            handler: (thisObj: INavItem) => history.push(thisObj.to),
+            visible: false
+        },
         SignIn: {
             display: 'SignIn',
             icon: <FiLogIn />,
@@ -113,6 +120,7 @@ const Sidebar: React.FC = () => {
         newMenu['Contacts'].visible = !!user;
         newMenu['Persons'].visible = !!user;
         newMenu['Cities'].visible = !!user;
+        newMenu['Messages'].visible = !!user;
 
         setMenu({ ...menu, ...newMenu });
     }, [user, location]);

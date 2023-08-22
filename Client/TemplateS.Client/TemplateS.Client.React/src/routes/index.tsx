@@ -7,6 +7,7 @@ import Dashboard from '../pages/Dashboard';
 import Repository from '../pages/Repository';
 import DatabaseRepository from '../pages/DashboardRepository';
 import BalancedBrackts from '../pages/BalancedBrackts';
+import Messages from '../pages/Messages';
 import Users from '../pages/Users';
 import Contacts from '../pages/Contacts';
 import AddOrEditContact from '../pages/Contacts/AddOrEditContact';
@@ -24,6 +25,7 @@ const Routes: React.FC = () => {
             <Route path="/repositories/:repository+" component={Repository} />
             
             <Route path="/balancedbrackets" component={BalancedBrackts} Both />
+            <Route path="/messages" component={Messages} Both />
 
             <Route path="/databaserepositories" component={DatabaseRepository} isPrivate />
             <Route path="/users" component={Users} isPrivate />

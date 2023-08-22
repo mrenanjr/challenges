@@ -4,10 +4,21 @@ using TemplateS.Infra.CrossCutting.Auth;
 using TemplateS.Infra.CrossCutting.ExceptionHandler.Middleware;
 using TemplateS.Infra.CrossCutting.IoC;
 using TemplateS.Infra.CrossCutting.RabbitMQ;
+using TemplateS.Infra.CrossCutting.FluentValidation;
 using TemplateS.Infra.CrossCutting.Swagger;
 using TemplateS.Infra.Data.Context;
+using Microsoft.Extensions.WebEncoders.Testing;
 
 var builder = WebApplication.CreateBuilder(args);
+var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+if(!string.IsNullOrEmpty(env))
+{
+    builder.Configuration.AddJsonFile($"appsettings.{env}.json",
+            optional: true,
+            reloadOnChange: true);
+}
+
 var services = builder.Services;
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -29,7 +40,8 @@ Console.WriteLine("******* CONNECTION STRING ******** CONNECTION STRING ********
 
 services.AddDbContext<ContextCore>(o => o.UseSqlServer(connectionString));
 services.AddAutoMapper(typeof(AutoMapperSetup));
-services.AddRabbitMQConfiguration(builder.Configuration.GetSection("RabbitMqConfig"));
+services.AddRabbitMQConfiguration(builder.Configuration.GetSection("RabbitMqConfiguration"));
+services.AddFluentValidationSetup();
 
 NativeInjector.RegisterServices(services);
 services.AddSwaggerConfiguration();
@@ -40,8 +52,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dataContext = scope.ServiceProvider.GetRequiredService<ContextCore>();
-    
-    if(dataContext.Database.GetPendingMigrations().Any())
+
+    if (dataContext.Database.GetPendingMigrations().Any())
         dataContext.Database.Migrate();
 }
 
