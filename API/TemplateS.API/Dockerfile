@@ -1,24 +1,17 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 WORKDIR /app
 
-# Copy csproj and restore as distinct layers
-COPY *.csproj ./
+COPY . ./
 RUN dotnet restore
-
-COPY . ./
 RUN dotnet publish -c Release -o out
 
-# Copy everything else and build
-COPY . ./
-RUN dotnet publish -c Release -o out
+# Copy wait-for-it.sh into our image
+COPY wait-for-it.sh wait-for-it.sh
+# Make it executable, in Linux
+RUN chmod +x wait-for-it.sh
 
-# Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
-
 WORKDIR /app
 
-EXPOSE 5000
-
 COPY --from=build-env /app/out .
-
 ENTRYPOINT ["dotnet", "TemplateS.API.dll"]

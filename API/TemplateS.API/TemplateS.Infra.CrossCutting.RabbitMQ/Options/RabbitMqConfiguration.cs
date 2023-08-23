@@ -12,5 +12,6 @@ namespace TemplateS.Infra.CrossCutting.RabbitMQ.Options
         public string Queue { get; set; }
         public string User { get; set; }
         public string Password { get; set; }
+        public int Port { get; set; }
     }
 }

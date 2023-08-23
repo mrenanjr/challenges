@@ -27,6 +27,7 @@ namespace TemplateS.Infra.CrossCutting.RabbitMQ.Repositories
                 _config.Host = "localhost";
                 _config.Queue = "messages";
                 _config.User = "guest";
+                _config.Port = 5672;
                 _config.Password = "guest";
             }
 
@@ -41,7 +42,7 @@ namespace TemplateS.Infra.CrossCutting.RabbitMQ.Repositories
                     HostName = _config.Host,
                     UserName = _config.User,
                     Password = _config.Password,
-                    Port = 5672,
+                    Port = _config.Port,
                     DispatchConsumersAsync = true
                 };
 

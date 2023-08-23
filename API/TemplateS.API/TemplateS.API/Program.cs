@@ -7,7 +7,6 @@ using TemplateS.Infra.CrossCutting.RabbitMQ;
 using TemplateS.Infra.CrossCutting.FluentValidation;
 using TemplateS.Infra.CrossCutting.Swagger;
 using TemplateS.Infra.Data.Context;
-using Microsoft.Extensions.WebEncoders.Testing;
 
 var builder = WebApplication.CreateBuilder(args);
 var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
