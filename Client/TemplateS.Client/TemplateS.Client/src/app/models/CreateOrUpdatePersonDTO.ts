@@ -3,4 +3,5 @@ export interface CreateOrUpdatePersonDTO {
   age: string;
   cpf: string;
   cityId: string;
+  email: string;
 };

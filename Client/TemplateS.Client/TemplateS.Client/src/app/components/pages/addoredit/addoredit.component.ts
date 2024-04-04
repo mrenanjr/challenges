@@ -22,7 +22,8 @@ export class AddOrEditComponent implements OnInit {
     name: '',
     age: '',
     cityId: '',
-    cpf: ''
+    cpf: '',
+    email: ''
   };
   cities: CityDTO[] = [];
   form: FormGroup;
@@ -51,6 +52,7 @@ export class AddOrEditComponent implements OnInit {
         age: new FormControl(this.person.age, []),
         cityId: new FormControl(this.person.cityId, []),
         cpf: new FormControl(this.person.cpf, []),
+        email: new FormControl(this.person.email, []),
       })
     }
   }
@@ -76,8 +78,9 @@ export class AddOrEditComponent implements OnInit {
       this.person = {
         name: x.name,
         age: x.age,
-        cityId: x.cityId,
-        cpf: x.cpf
+        cityId: x.city.id,
+        cpf: x.cpf,
+        email: x.contact.email
       }
       this.form.setValue(this.person);
       this.getCities();

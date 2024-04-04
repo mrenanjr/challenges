@@ -1,59 +1,75 @@
-version: "3.4"
+version: "3.8"
 
 services: 
-    #proxy:
-    #    build: 
-    #        context: "./Proxy"
-    #        dockerfile: "Dockerfile"
-    #    ports: 
-    #        - "80:80"
-    #    restart: always
-
-    #clientangular:
-    #    depends_on:
-    #        - api
-    #    build:
-    #        context: "./Client/TemplateS.Client/TemplateS.Client"
-    #        dockerfile: "Dockerfile"
-    #    ports: 
-    #        - "4200:4200"
-    #    expose:
-    #        - "4200"
-
-    rabbitmq:
-        image: rabbitmq:3-management
-        container_name: rabbitmq
-        ports:
-            - 5672:5672
-            - 15672:15672
+    # rabbitmq:
+    #     image: rabbitmq:3-management
+    #     container_name: rabbitmq
+    #     ports:
+    #         - "5672:5672"
+    #         - "15672:15672"
+    #     networks:
+    #         - mynetwork
     
     sqldata:
-        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        image: mcr.microsoft.com/mssql/server:2017-latest
         container_name: sqldata
         environment:
             MSSQL_SA_PASSWORD: "Desafio123"
             ACCEPT_EULA: "Y"
             MSSQL_PID: Express
+        # networks:
+        #     - mynetwork
         ports: 
             - "1433:1433"
 
-    api:
-        depends_on:
+    backend:
+        image: backend
+        links:
             - sqldata
-            - rabbitmq
-        container_name: api
+            # - rabbitmq
         build: 
-            context: "./API/TemplateS.API"
+            context: ./API/TemplateS.API
             dockerfile: "Dockerfile"
-        ports: 
+        # networks:
+        #     - mynetwork
+        ports:
             - "5000:80"
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
 
     clientreact:
-        depends_on:
-            - api
-        container_name: clientreact
+        image: clientreact
         build:
-            context: "./Client/TemplateS.Client/TemplateS.Client.React"
-            dockerfile: "Dockerfile"
+            context: ./Client/TemplateS.Client/TemplateS.Client.React
+            dockerfile: Dockerfile
         ports: 
-            - "3000:80"
+            - "3000:3000"
+        # networks:
+        #     - mynetwork
+    
+    clientangular:
+        image: clientangular
+        build:
+            context: ./Client/TemplateS.Client/TemplateS.Client
+            dockerfile: Dockerfile
+        ports: 
+            - "4200:4200"
+        volumes:
+            - ./Client/TemplateS.Client/TemplateS.Client/src:/app/src
+
+    proxy:
+        image: proxy
+        depends_on:
+            - backend
+            - clientreact
+            - clientangular
+        build: 
+            context: ./Proxy
+            dockerfile: Dockerfile
+        ports: 
+            - "80:80"
+       # restart: always
+
+# networks:
+#   mynetwork:
+#     driver: bridge

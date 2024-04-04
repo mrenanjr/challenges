@@ -38,6 +38,10 @@
               <input [value]="person.cpf" type="text" class="form-control" formControlName="cpf" />
             </div>
             <div class="form-group">
+              <label for="Email">Email</label>
+              <input [value]="person.email" type="email" class="form-control" formControlName="email" />
+            </div>
+            <div class="form-group">
               <div ngbDropdown class="d-inline-block">
                 <button type="button" class="btn btn-outline-primary" id="citiesDD" ngbDropdownToggle>{{person.cityId.length > 0 ? getCityFromperson() : 'Cities'}}</button>
                 <div ngbDropdownMenu aria-labelledby="citiesDD">

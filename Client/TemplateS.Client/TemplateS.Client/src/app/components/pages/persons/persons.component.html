@@ -7,7 +7,8 @@
             <h1 class="card-title">{{person.name}}</h1>
             <p class="card-text">{{person.age}}</p>
             <p class="card-text">{{person.cpf}}</p>
-            <p class="card-text">{{person.city}}</p>
+            <p class="card-text">{{person.contact.email}}</p>
+            <p class="card-text">{{person.city.name}}</p>
           </div>
           <div class="card-footer">
             <span>{{person.createdDate | date: 'dd/MM/yyyy HH:mm:ss'}}</span>

@@ -1,9 +1,12 @@
+import { CityDTO } from "./CityDTO";
+import { ContactDTO } from "./ContactDTO";
+
 export interface PersonDTO {
   id: string;
   name: string;
   age: string;
   cpf: string;
-  cityId: string;
-  city: string;
+  city: CityDTO;
+  contact: ContactDTO;
   createdDate: Date;
 }
