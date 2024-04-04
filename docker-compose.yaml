@@ -23,7 +23,7 @@ services:
             - "1433:1433"
 
     backend:
-        image: backend
+        image: backend:latest
         links:
             - sqldata
             # - rabbitmq
@@ -38,7 +38,7 @@ services:
             - ASPNETCORE_ENVIRONMENT=Development
 
     clientreact:
-        image: clientreact
+        image: clientreact:latest
         build:
             context: ./Client/TemplateS.Client/TemplateS.Client.React
             dockerfile: Dockerfile
@@ -48,7 +48,7 @@ services:
         #     - mynetwork
     
     clientangular:
-        image: clientangular
+        image: clientangular:latest
         build:
             context: ./Client/TemplateS.Client/TemplateS.Client
             dockerfile: Dockerfile
@@ -58,7 +58,7 @@ services:
             - ./Client/TemplateS.Client/TemplateS.Client/src:/app/src
 
     proxy:
-        image: proxy
+        image: proxy:latest
         depends_on:
             - backend
             - clientreact
@@ -68,6 +68,8 @@ services:
             dockerfile: Dockerfile
         ports: 
             - "80:80"
+        volumes:
+            - ./Proxy/nginx.conf:/etc/nginx/nginx.conf
        # restart: always
 
 # networks:

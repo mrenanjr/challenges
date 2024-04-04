@@ -1,10 +1,16 @@
-FROM node:alpine
+FROM node:alpine as builder
 WORKDIR /app
-
-EXPOSE 3000
 
 COPY package*.json .
 RUN npm install
 COPY . ./
+RUN npm run build
 
-CMD ["npm", "run", "start"]
+
+FROM nginx:alpine
+
+COPY --from=builder /app/build /usr/share/nginx/html
+
+EXPOSE 3000
+
+COPY ["./nginx-custom.conf","/etc/nginx/conf.d/default.conf"]
