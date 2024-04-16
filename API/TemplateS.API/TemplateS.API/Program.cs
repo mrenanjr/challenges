@@ -39,7 +39,17 @@ Console.WriteLine("******* CONNECTION STRING ******** CONNECTION STRING ********
 
 services.AddDbContext<ContextCore>(o => o.UseSqlServer(connectionString));
 services.AddAutoMapper(typeof(AutoMapperSetup));
-services.AddRabbitMQConfiguration(builder.Configuration.GetSection("RabbitMqConfiguration"));
+
+var rabbitMqSection = builder.Configuration.GetSection("RabbitMqConfiguration");
+var host = rabbitMqSection.GetValue<string>("Host");
+var queue = rabbitMqSection.GetValue<string>("Queue");
+user = rabbitMqSection.GetValue<string>("User");
+port = rabbitMqSection.GetValue<string>("Port");
+password = rabbitMqSection.GetValue<string>("Password");
+
+Console.WriteLine("******* RABBITMQ ******** RABBITMQ ******** : " + $"Host={host},{port};Queue={queue};User={user};Password={password}");
+
+services.AddRabbitMQConfiguration(rabbitMqSection);
 services.AddFluentValidationSetup();
 
 NativeInjector.RegisterServices(services);

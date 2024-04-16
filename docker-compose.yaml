@@ -1,18 +1,16 @@
 version: "3.8"
 
 services: 
-    # rabbitmq:
-    #     image: rabbitmq:3-management
-    #     container_name: rabbitmq
-    #     ports:
-    #         - "5672:5672"
-    #         - "15672:15672"
-    #     networks:
-    #         - mynetwork
+    rabbitmq:
+        image: rabbitmq:3-management
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+        # networks:
+        #     - mynetwork
     
     sqldata:
         image: mcr.microsoft.com/mssql/server:2017-latest
-        container_name: sqldata
         environment:
             MSSQL_SA_PASSWORD: "Desafio123"
             ACCEPT_EULA: "Y"
@@ -26,7 +24,7 @@ services:
         image: backend
         links:
             - sqldata
-            # - rabbitmq
+            - rabbitmq
         build: 
             context: ./API/TemplateS.API
             dockerfile: "Dockerfile"
@@ -36,6 +34,7 @@ services:
             - "5000:80"
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
+        restart: always
 
     clientreact:
         image: clientreact
@@ -61,6 +60,8 @@ services:
         image: proxy
         depends_on:
             - backend
+            - sqldata
+            - rabbitmq
             - clientreact
             - clientangular
         build: 
